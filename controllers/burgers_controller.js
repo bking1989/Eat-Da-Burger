@@ -6,7 +6,15 @@ var burger = require("../models/burgers.js");
 var router = express.Router();
 
 // GET path
-router.get("/", (req, res) => {});
+router.get("/", (req, res) => {
+    burger.selectAll((data) => {
+        var hbsObj = {
+            burgers: data
+        };
+        
+        res.render("index", hbsObj);
+    });
+});
 
 // POST path
 router.post("/", (req, res) => {});
