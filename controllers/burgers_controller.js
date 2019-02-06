@@ -28,9 +28,32 @@ router.post("/api/burgers", (res, req) => {
 
 // PUT route
 router.put("/api/burgers/:id", (req, res) => {
+    var condition = "id " + req.params.id;
+
+    console.log("Condition: " + condition);
+
+    burgers.update({
+        devoured: req.body.devour
+    }, condition, (result) => {
+        if (result.changedRows === 0) {
+            return res.status(404).end()
+        } else {
+            res.status(200).end();
+        }
+    });
+});
+
+// DELETE route
+router.delete("/api/burgers/:id", (req, res) => {
     var condition = "id = " + req.params.id;
 
-    console.log("condition", condition);
+    burgers.delete(condition, (result) => {
+        if (result.affectedRows == 0) {
+            return res.status(404).end();
+        } else {
+            res.status(200).end();
+        }
+    });
 });
 
 module.exports = router;
