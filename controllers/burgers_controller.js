@@ -17,7 +17,11 @@ router.get("/", (req, res) => {
 });
 
 // POST path
-router.post("/", (req, res) => {});
+router.post("/api/burgers", (req, res) => {
+    burger.insertOne(["burger_name", "devoured"], [req.body.burger_name, req.body.devoured], (result) => {
+        res.json({ id: result.insertId });
+    });
+});
 
 // PUT path
 router.put("/", (req, res) => {});

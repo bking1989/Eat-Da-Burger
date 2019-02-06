@@ -1,3 +1,7 @@
+<h1>Eat Da Burger!</h1>
+<h2>The best burgers in town, or your money back.</h2>
+
+<h2>Our Menu</h2>
 <ul>
 {{#each burgers}}
     <li>
@@ -8,3 +12,19 @@
     <br>
 {{/each}}
 </ul>
+
+<h2>Add a Burger</h2>
+<form class="create-form">
+    <div class="form-group">
+        <label for="burgerName">Burger Name</label>
+        <input type="text" id="burgerName" name="burgerName">
+    </div>
+    <div class="form-group">
+        <label for="devoured">Devoured?</label>
+        <br>
+        <input type="radio" name="devoured" value="1" checked> Devoured!<br>
+        <input type="radio" name="devoured" value="0"> Not Devoured!
+    </div>
+    <br>
+    <button type="submit">Add Burger</button>
+</form>

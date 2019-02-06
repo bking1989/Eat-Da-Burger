@@ -14,7 +14,18 @@ var orm = {
             cb(results);
         });
     },
-    insertOne: () => {},
+
+    insertOne: (table, [valOne, valTwo], [burgerName, devoured], cb) => {
+        var queryString = `INSERT INTO ${table}(${valOne}, ${valTwo}) VALUES(${burgerName}, ${devoured});`
+
+        connection.query(queryString, (error, results) => {
+            if (error){
+                console.error("Connection Error: " + error.stack);
+            }
+
+            cb(results);
+        });
+    },
     updateOne: () => {}
 };
 
