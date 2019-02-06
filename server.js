@@ -1,6 +1,9 @@
 // Require the Express package
 var express = require("express");
 
+// Define our PORT
+var PORT = process.env.PORT || 8080;
+
 // Set up our Express application
 var app = express();
 
