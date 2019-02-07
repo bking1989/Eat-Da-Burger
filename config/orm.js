@@ -19,7 +19,7 @@ var orm = {
         var queryString = "INSERT INTO " + table;
         queryString += " (";
         queryString += cols.toString();
-        queryString += ") VALUES('?', '?');";
+        queryString += ") VALUES(?, ?);";
 
         connection.query(queryString, vals, (err, result) => {
             if (err){
