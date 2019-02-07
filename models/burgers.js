@@ -8,11 +8,13 @@ var burger = {
             cb(res);
         });
     },
-    insertOne: (cb) => {
-        orm.insertOne('burgers', ['burger_name, devoured'], (res) => {
+    
+    insertOne: (cols, vals, cb) => {
+        orm.insertOne('burgers', cols, vals, (res) => {
             cb(res);
         });
     },
+    
     updateOne: () => {},
 };
 

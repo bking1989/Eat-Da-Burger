@@ -15,17 +15,21 @@ var orm = {
         });
     },
 
-    insertOne: (table, [valOne, valTwo], [burgerName, devoured], cb) => {
-        var queryString = `INSERT INTO ${table}(${valOne}, ${valTwo}) VALUES(${burgerName}, ${devoured});`
+    insertOne: (table, cols, vals, cb) => {
+        var queryString = "INSERT INTO " + table;
+        queryString += " (";
+        queryString += cols.toString();
+        queryString += ") VALUES('?', '?');";
 
-        connection.query(queryString, (error, results) => {
-            if (error){
-                console.error("Connection Error: " + error.stack);
+        connection.query(queryString, vals, (err, result) => {
+            if (err){
+                console.error("Connection Error: " + err.stack);
             }
 
-            cb(results);
+            cb(result);
         });
     },
+
     updateOne: () => {}
 };
 
