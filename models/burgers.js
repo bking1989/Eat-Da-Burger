@@ -8,14 +8,18 @@ var burger = {
             cb(res);
         });
     },
-    
+
     insertOne: (cols, vals, cb) => {
         orm.insertOne('burgers', cols, vals, (res) => {
             cb(res);
         });
     },
-    
-    updateOne: () => {},
+
+    updateOne: (id, cb) => {
+        orm.updateOne('burgers', id, (res) => {
+            cb(res);
+        });
+    },
 };
 
 // Export our burger module

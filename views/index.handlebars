@@ -4,11 +4,13 @@
 <h2>Our Menu</h2>
 <ul>
 {{#each burgers}}
-    <li>
+    <li style="margin-bottom:0.5em;">
         <b>ID Number:</b> {{id}}<br>
         <b>Name:</b> {{burger_name}}<br>
         <b>Devoured:</b> {{devoured}}
     </li>
+    <button type="button" class="updateBtn" data-target="{{id}}">Update this Burger!</button>
+    <br>
     <br>
 {{/each}}
 </ul>

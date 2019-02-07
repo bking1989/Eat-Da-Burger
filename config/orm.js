@@ -30,7 +30,18 @@ var orm = {
         });
     },
 
-    updateOne: () => {}
+    updateOne: (table, id, cb) => {
+        var queryString = "SELECT * FROM " + table;
+        queryString += " WHERE id = ?";
+
+        connection.query(queryString, id, (err, result) => {
+            if (err){
+                throw err
+            }
+
+            cb(result);
+        });
+    }
 };
 
 // Export ORM function as module

@@ -18,4 +18,11 @@ $(() => {
             location.reload();
         });
     });
+
+    // When you click on a burger's edit button
+    $("button.updateBtn").on("click", function(e) {
+        var btnNum = $(this).attr("data-target");
+
+        location.href = "/api/burgers/" + btnNum;
+    });
 });
