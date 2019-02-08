@@ -41,6 +41,18 @@ var orm = {
 
             cb(result);
         });
+    },
+
+    newBurger: (newVals, cb) => {
+        var queryString = "UPDATE burgers SET burger_name = ?, devoured = ? WHERE id = ?";
+
+        connection.query(queryString, newVals, (err, result) => {
+            if (err){
+                throw err
+            }
+
+            cb(result);
+        });
     }
 };
 

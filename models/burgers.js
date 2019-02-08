@@ -20,6 +20,12 @@ var burger = {
             cb(res);
         });
     },
+
+    newBurger: (newVals, cb) => {
+        orm.newBurger('burgers', newVals, (res) => {
+            cb(res);
+        });
+    }
 };
 
 // Export our burger module

@@ -5,7 +5,7 @@ var burger = require("../models/burgers.js");
 // Establish a router for our app
 var router = express.Router();
 
-// Get all the entries
+// GET for all database entries
 router.get("/", (req, res) => {
     burger.selectAll((data) => {
         var hbsObj = {
@@ -16,17 +16,31 @@ router.get("/", (req, res) => {
     });
 });
 
-// Add a new entry
+// POST route for new entry
 router.post("/api/burgers", (req, res) => {
     burger.insertOne(['burger_name', 'devoured'], [req.body.burger_name, req.body.devoured], (result) => {
         res.json({ id: result.insertId });
     });
 });
 
-// Update an entry
+// GET route for update page
 router.get("/api/burgers/:id", (req, res) => {
     burger.updateOne(req.params.id, (result) => {
-        res.render("single-entry", result)
+        res.render("single-entry", result[0])
+    });
+});
+
+// PUT route for update
+router.put("/api/burgers/:id", function (req, res) {
+    burger.newBurger([req.body.updateName, req.body.updateDev, req.params.id], (err, result) => {
+        if (err) {
+            return res.status(500).end();
+        } else if (result.changedRows === 0) {
+            return res.status(404).end();
+        }
+
+        res.status(200).end();
+        history.go(-1);
     });
 });
 

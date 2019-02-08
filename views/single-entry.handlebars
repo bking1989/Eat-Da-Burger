@@ -1,1 +1,25 @@
-<h1>Test</h1>
+<h1>Eat Da Burger!</h1>
+<h2>The best burgers in town, or your money back.</h2>
+<br>
+<b>ID Number:</b> {{this.id}}<br>
+<b>Name:</b> {{this.burger_name}}<br>
+<b>Devoured:</b> {{this.devoured}}
+<br>
+<br>
+<br>
+<form class="update-form">
+    <div class="update-group">
+        <label for="updateName">New Name?</label>
+        <br>
+        <input type="text" id="updateName" name="updateName" style="margin-top:0.5em;">
+    </div>
+    <br>
+    <div class="update-group">
+        <label for="updateDev">Devoured?</label>
+        <br>
+        <input type="radio" name="updateDev" value="1" style="margin-top:0.5em;" checked> Devoured!<br>
+        <input type="radio" name="updateDev" value="0"> Not Devoured!
+    </div>
+    <br>
+    <button type="submit" class="updateBtn" data-target="{{this.id}}">Update Burger</button>
+</form>
