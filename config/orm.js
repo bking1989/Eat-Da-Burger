@@ -43,10 +43,12 @@ var orm = {
         });
     },
 
-    newBurger: (newVals, cb) => {
-        var queryString = "UPDATE burgers SET burger_name = ?, devoured = ? WHERE id = ?";
+    newBurger: (table, values, cb) => {
+        var queryString = "UPDATE " + table;
+        queryString += " SET burger_name = ?, devoured = ?";
+        queryString +=  " WHERE id = ?";
 
-        connection.query(queryString, newVals, (err, result) => {
+        connection.query(queryString, table, values, (err, result) => {
             if (err){
                 throw err
             }

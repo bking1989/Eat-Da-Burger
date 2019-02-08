@@ -21,8 +21,8 @@ var burger = {
         });
     },
 
-    newBurger: (newVals, cb) => {
-        orm.newBurger('burgers', newVals, (res) => {
+    newBurger: (values, cb) => {
+        orm.newBurger('burgers', values, (res) => {
             cb(res);
         });
     }
