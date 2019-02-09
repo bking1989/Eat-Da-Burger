@@ -31,7 +31,7 @@ router.get("/api/burgers/:id", (req, res) => {
 });
 
 // PUT route for update
-router.put("/api/burgers/:id", function (req, res) {
+router.put("/api/burgers/:id", (req, res) => {
     burger.newBurger([req.body.updateName, req.body.updateDev, req.params.id], (err, result) => {
         if (err) {
             return res.status(500).end();
@@ -39,6 +39,7 @@ router.put("/api/burgers/:id", function (req, res) {
             return res.status(404).end();
         }
 
+        console.log(req.body.updateName, req.body.updateDev, req.params.id);
         res.status(200).end();
         history.go(-1);
     });
