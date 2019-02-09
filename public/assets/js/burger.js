@@ -19,7 +19,7 @@ $(() => {
         });
     });
 
-    // When you click on a burger's edit button
+    // When you click on a burger's edit button, on the main page
     $("button.updateBtn").on("click", function() {
         var btnNum = $(this).attr("data-target");
 
@@ -27,7 +27,7 @@ $(() => {
     });
 
     // When you click on a burger's update button
-    $(".update-form").on("submit", function(event) {
+    $("button.change").on("click", function(event) {
         event.preventDefault();
 
         // Define our updated burger
@@ -36,14 +36,15 @@ $(() => {
           devoured: $("input[name=updateDev]:checked").val().trim()
         };
 
-        var id = $(this).attr("data-target");
+        var id = parseInt($(this).attr("data-target"));
 
-        // POST request.
+        // PUT request.
         $.ajax("/api/burgers/" + id, {
             type: "PUT",
             data: updatedBurger
-        }).then(() => {
-            console.log("Updated a burger!");
         });
+
+        // Goes back to the main page
+        location.href = "../../";
     });
 });
