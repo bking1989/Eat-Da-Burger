@@ -6,5 +6,6 @@ DROP TABLE IF EXISTS burgers;
 CREATE TABLE burgers(
 	id INT AUTO_INCREMENT PRIMARY KEY,
     burger_name VARCHAR(150) NOT NULL,
-    devoured BOOLEAN NOT NULL
+    devoured BOOLEAN NOT NULL,
+    createdAt TIMESTAMP NOT NULL
 );
