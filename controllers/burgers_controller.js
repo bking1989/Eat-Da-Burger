@@ -32,16 +32,14 @@ router.get("/api/burgers/:id", (req, res) => {
 
 // PUT route for update
 router.put("/api/burgers/:id", (req, res) => {
-    burger.newBurger([req.body.updateName, req.body.updateDev, req.params.id], (err, result) => {
+    burger.newBurger([req.body.burger_name, req.body.devoured, req.params.id], (err, result) => {
         if (err) {
             return res.status(500).end();
         } else if (result.changedRows === 0) {
             return res.status(404).end();
         }
 
-        console.log(req.body.updateName, req.body.updateDev, req.params.id);
         res.status(200).end();
-        history.go(-1);
     });
 });
 

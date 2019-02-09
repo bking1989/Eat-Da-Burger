@@ -46,7 +46,7 @@ var orm = {
     newBurger: (table, values, cb) => {
         var queryString = "UPDATE " + table + " SET burger_name = ?, devoured = ? WHERE id = ?;"
 
-        connection.query(queryString, table, values, (err, result) => {
+        connection.query(queryString, values, (err, result) => {
             if (err){
                 throw err
             }
